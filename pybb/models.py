@@ -86,6 +86,8 @@ class Forum(models.Model):
         return self.name
 
     def update_counters(self):
+        # Disable updating counters
+        return
         self.topic_count = Topic.objects.filter(forum=self).count()
         if self.topic_count:
             posts = Post.objects.filter(topic__forum_id=self.id)
